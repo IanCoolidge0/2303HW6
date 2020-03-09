@@ -21,7 +21,12 @@
 typedef enum {
 	WATER,
 	MISS,
-	HIT
+	HIT,
+	CARRIER,
+	BATTLESHIP,
+	CRUISER,
+	SUBMARINE,
+	DESTROYER
 } Symbol;
 
 struct Coordinate {

@@ -116,6 +116,108 @@ void BattleshipBoard::manuallyPlaceShipsOnGameBoard(WaterCraft ship[]) {
 	}
 }
 
+void BattleshipBoard::randomlyPlaceShipsOnGameBoard(WaterCraft ship[]) {
+	Coordinate position;
+	int direction = -1;
+	int i = 0;
+
+	Production* prod = new Production();
+	for (i = 0; i < NUM_OF_SHIPS; i++) {
+		while (true) {
+			direction = prod->getRandomNumber (0, 1); /* 0 -> horizontal, 1 -> vertical */
+			position = prod->generatePosition (direction, ship[i].getLength());
+
+			if (isValidLocation (position, direction, ship[i].getLength())) break;
+		}
+
+		putShipOnGameBoard (ship[i], position, direction);
+	}
+	delete prod;
+}
+
+void BattleshipBoard::updateGameBoard(Coordinate target) {
+	switch (gameBoard[target.row][target.column].symbol) {
+		/* miss */
+		case WATER:
+			gameBoard[target.row][target.column].symbol = MISS;
+			break;
+
+		/* hit */
+		case CARRIER:
+		case BATTLESHIP:
+		case CRUISER:
+		case SUBMARINE:
+		case DESTROYER:
+			gameBoard[target.row][target.column].symbol = HIT;
+			break;
+
+		case HIT:
+		case MISS:
+		default:
+			break;
+	}
+}
+
+void BattleshipBoard::checkBoundsOfCardinal(bool cardinals[], int bound, int direction) {
+	switch (direction) {
+		case 0:
+			if (bound < 0)
+				cardinals[0] = false;
+			else
+				cardinals[0] = true;
+			break;
+
+		case 1:
+			if (bound > 9)
+				cardinals[1] = false;
+			else
+				cardinals[1] = true;
+			break;
+
+		case 2:
+			if (bound < 0)
+				cardinals[2] = false;
+			else
+				cardinals[2] = true;
+			break;
+
+		case 3:
+			if (bound > 9)
+				cardinals[3] = false;
+			else
+				cardinals[3] = true;
+			break;
+	}
+}
+
+short BattleshipBoard::checkShot(Coordinate target) {
+	int hit = -2;
+
+	switch (gameBoard[target.row][target.column].symbol) {
+		/* miss */
+		case WATER:
+			hit = 0;
+			break;
+
+		/* hit */
+		case CARRIER:
+		case BATTLESHIP:
+		case CRUISER:
+		case SUBMARINE:
+		case DESTROYER:
+			hit = 1;
+			break;
+
+		case HIT:
+		case MISS:
+		default:
+			hit = -1;
+			break;
+	}
+
+	return hit;
+}
+
 bool BattleshipBoard::isValidLocation(Coordinate coord, int direction, int length) {
 	int i = length - 1;
 	bool isValid = true;

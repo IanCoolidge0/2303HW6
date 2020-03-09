@@ -23,12 +23,14 @@ public:
 	Symbol getSymbol();
 	void setName(std::string name);
 	std::string getName();
+	void setPlayer(int player);
+	int getPlayer();
 
-	bool checkSunkShip(short player, char shipSymbol, std::ostream outputFile);
 private:
 	int length;
 	Symbol symbol;
 	std::string name;
+	int player;
 };
 
 #endif /* WATERCRAFT_H_ */
