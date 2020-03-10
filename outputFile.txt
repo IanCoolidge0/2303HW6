@@ -1,0 +1,49 @@
+Player 2's turn.
+7, 4 is a miss!
+Player 1's turn.
+2, 2 is a miss!
+Player 2's turn.
+9, 2 is a miss!
+Player 1's turn.
+4, 4 is a miss!
+Player 2's turn.
+9, 5 is a hit!
+Player 1's turn.
+6, 6 is a miss!
+Player 2's turn.
+8, 5 is a miss!
+Player 1's turn.
+8, 8 is a miss!
+Player 2's turn.
+9, 4 is a miss!
+Player 1's turn.
+9, 9 is a hit!
+Player 2's turn.
+9, 6 is a hit!
+Player 1's turn.
+9, 8 is a hit!
+Player 2's turn.
+9, 7 is a hit!
+Player 1's turn.
+9, 7 is a hit!
+Player 2's turn.
+9, 8 is a hit!
+Player 1's turn.
+9, 6 is a hit!
+Player 2's turn.
+9, 9 is a hit!
+Player 1's Carrier sunked!
+Player 1's turn.
+9, 5 is a hit!
+Player 2's Carrier sunked!
+Player 2's turn.
+6, 7 is a miss!
+Player 1's turn.
+8, 2 is a hit!
+Player 2's turn.
+8, 0 is a hit!
+Player 1's turn.
+8, 3 is a hit!
+Player 2's turn.
+7, 0 is a miss!
+Player 1's turn.

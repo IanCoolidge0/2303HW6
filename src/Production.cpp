@@ -67,7 +67,7 @@ bool Production::prod(int argc, char* argv[]) {
 
 	welcomeScreen ();
 	systemMessage("\t\t\t\tHit <ENTER> to continue!\n");
-	system ("cls");
+	//system ("cls");
 
 	playerOneGameBoard->initializeGameBoard();
 	playerTwoGameBoard->initializeGameBoard();
@@ -93,7 +93,7 @@ bool Production::prod(int argc, char* argv[]) {
 	player = getRandomNumber(0, 1);
 	printf("> Player %d has been randomly selected to go first.\n", player + 1);
 	systemMessage ("> Hit <ENTER> to continue!\n");
-	system ("cls");
+	//system ("cls");
 
 	while(true) {
 		outStream << "Player " << (player + 1) << "'s turn." << std::endl;
@@ -302,7 +302,7 @@ bool Production::prod(int argc, char* argv[]) {
 
 		player = !player;
 
-		system ("cls");
+		//system ("cls");
 	}
 
 	players[0].totalShots = players[0].numHits + players[0].numMisses;
