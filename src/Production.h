@@ -17,22 +17,11 @@
 #include <random>
 #include <time.h>
 #include <string.h>
+#include <fstream>
 
-typedef enum {
-	WATER,
-	MISS,
-	HIT,
-	CARRIER,
-	BATTLESHIP,
-	CRUISER,
-	SUBMARINE,
-	DESTROYER
-} Symbol;
-
-struct Coordinate {
-	int row;
-	int column;
-};
+#include "main.h"
+#include "BattleshipBoard.h"
+#include "WaterCraft.h"
 
 class Production {
 public:
@@ -42,15 +31,17 @@ public:
 	bool prod(int argc, char* argv[]);
 
 	void welcomeScreen();
-	void systemMessage(char *message);
+	void systemMessage(std::string message);
 
-	bool isWinner(int player);
+	bool isWinner(Stats players[], int player);
 	Coordinate generatePosition(int direction, int length);
 
 	bool convertStringToPosition(Coordinate position[], char* stringPosition, int length);
 	Coordinate getTarget();
 
 	int getRandomNumber(int lowest, int highest);
+
+	bool checkSunkShip(short sunkShip[][NUM_OF_SHIPS], short player, char shipSymbol, std::ostream& stream);
 private:
 	int hits1, hits2;
 };

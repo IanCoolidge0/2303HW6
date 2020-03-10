@@ -9,9 +9,16 @@
 
 WaterCraft::WaterCraft() :
 	length(0),
-	symbol(HIT),
+	symbol(WATER),
 	name("") {
 	// TODO Auto-generated constructor stub
+
+}
+
+WaterCraft::WaterCraft(char symbol, int length, std::string name) :
+	length(length),
+	symbol(symbol),
+	name(name) {
 
 }
 
@@ -27,11 +34,11 @@ int WaterCraft::getLength() {
 	return length;
 }
 
-void WaterCraft::setSymbol(Symbol symbol) {
+void WaterCraft::setSymbol(char symbol) {
 	this->symbol = symbol;
 }
 
-Symbol WaterCraft::getSymbol() {
+char WaterCraft::getSymbol() {
 	return symbol;
 }
 

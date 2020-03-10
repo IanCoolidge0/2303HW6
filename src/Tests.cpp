@@ -17,5 +17,5 @@ Tests::~Tests() {
 }
 
 bool Tests::tests() {
-	return false;
+	return true;
 }

@@ -63,7 +63,7 @@ void BattleshipBoard::putShipOnGameBoard(WaterCraft ship, Coordinate coord, int 
 	}
 }
 
-void BattleshipBoard::manuallyPlaceShipsOnGameBoard(WaterCraft ship[]) {
+void BattleshipBoard::manuallyPlaceShipsOnGameBoard(WaterCraft* ship[]) {
 	char       stringPosition[11] = "";
 	int        i = 0, j = 0;
 
@@ -77,20 +77,20 @@ void BattleshipBoard::manuallyPlaceShipsOnGameBoard(WaterCraft ship[]) {
 		while (true) {
 			system ("cls");
 			printGameBoard (true);
-			printf ("> Please enter the %d cells to place the %s across (no spaces):\n", ship[i].getLength(), ship[i].getName().c_str());
+			printf ("> Please enter the %d cells to place the %s across (no spaces):\n", ship[i]->getLength(), ship[i]->getName().c_str());
 			printf ("> ");
 			scanf ("%s", stringPosition);
 
 			Production* prod = new Production();
 			/* convertStringtoPosition returns false if unsuccessful */
-			if (prod->convertStringToPosition (position, stringPosition, ship[i].getLength())) {
+			if (prod->convertStringToPosition (position, stringPosition, ship[i]->getLength())) {
 
 				isValid = true;
 
-				for (j = 0; j < ship[i].getLength(); j++) {
+				for (j = 0; j < ship[i]->getLength(); j++) {
 
 					if (gameBoard[position[j].row][position[j].column].symbol == WATER) {
-						gameBoard[position[j].row][position[j].column].symbol = ship[i].getSymbol();
+						gameBoard[position[j].row][position[j].column].symbol = ship[i]->getSymbol();
 					} else {
 						isValid = false;
 						printf ("> Invalid input!\n");
@@ -116,7 +116,7 @@ void BattleshipBoard::manuallyPlaceShipsOnGameBoard(WaterCraft ship[]) {
 	}
 }
 
-void BattleshipBoard::randomlyPlaceShipsOnGameBoard(WaterCraft ship[]) {
+void BattleshipBoard::randomlyPlaceShipsOnGameBoard(WaterCraft* ship[]) {
 	Coordinate position;
 	int direction = -1;
 	int i = 0;
@@ -125,12 +125,12 @@ void BattleshipBoard::randomlyPlaceShipsOnGameBoard(WaterCraft ship[]) {
 	for (i = 0; i < NUM_OF_SHIPS; i++) {
 		while (true) {
 			direction = prod->getRandomNumber (0, 1); /* 0 -> horizontal, 1 -> vertical */
-			position = prod->generatePosition (direction, ship[i].getLength());
+			position = prod->generatePosition (direction, ship[i]->getLength());
 
-			if (isValidLocation (position, direction, ship[i].getLength())) break;
+			if (isValidLocation (position, direction, ship[i]->getLength())) break;
 		}
 
-		putShipOnGameBoard (ship[i], position, direction);
+		putShipOnGameBoard (*(ship[i]), position, direction);
 	}
 	delete prod;
 }
